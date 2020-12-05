@@ -19,10 +19,6 @@ public class UserApiController {
 	@Autowired
 	private UserService userService;
 	
-	//스프링 IoC 컨테이너에서 가지고 있는 Bean을 선언
-	@Autowired
-	private HttpSession session;
-	
 	@PostMapping("/api/user")
 	public ResponseDto<Integer> save(@RequestBody User user) {
 		System.out.println("UserApiController : save 호출됨");
@@ -33,16 +29,18 @@ public class UserApiController {
 	}
 	
 	// 다음시간에 스프링 시큐리티 이용해서 로그인!!
-	@PostMapping("/api/user/login")
-	public ResponseDto<Integer> login(@RequestBody User user) {
-		System.out.println("UserApiController : login호출됨");
-		User principal = userService.로그인(user);	//principal(접근주체)
-		
-		if(principal != null) {
-			//세션 생성
-			session.setAttribute("principal", principal);
-		}
-		
-		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-	}
+//	@PostMapping("/api/user/login")
+//	public ResponseDto<Integer> login(@RequestBody User user, HttpSession session) {
+//		System.out.println("UserApiController : login호출됨");
+//		User principal = userService.로그인(user);	//principal(접근주체)
+//		
+//		if(principal != null) {
+//			//세션 생성
+//			session.setAttribute("principal", principal);
+//		}
+//		
+//		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+//	}
+	
+	
 }
