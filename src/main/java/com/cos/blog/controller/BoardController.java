@@ -9,10 +9,17 @@ import com.cos.blog.config.auth.PrincipalDetail;
 @Controller
 public class BoardController {
 	
+    //	@AuthenticationPrincipal PrincipalDetail principal
 	@GetMapping({"", "/"})
-	public String index(@AuthenticationPrincipal PrincipalDetail principal) {
+	public String index() {
+//		System.out.println("로그인 사용자 아이디 : " + principal.getUsername());
 		// /WEB-INF/views/index.jsp
-		System.out.println("로그인 사용자 아이디 : " + principal.getUsername());
 		return "index";
+	}
+	
+	//USER 권한 필요
+	@GetMapping("/board/saveForm")
+	public String saveForm() {
+		return "board/saveForm";
 	}
 }
